@@ -2,16 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <link rel="stylesheet" href="theme.css">
+
+    <title>QuikStock</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <form id="form"><input type="text" id="stock" class="search" placeholder="$STOCK" name="stock" autofocus></form>
+    <div class="result">
+    <table id="table" cellspacing="10px">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">ATR</th>
+          <th scope="col">Avg Vol</th>
+          <th scope="col">R Vol</th>
+          <th scope="col">Float</th>
+          <th scope="col">Short Float</th>
+          <th scope="col">Institutional</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+      </tbody>
+    </table>
+    </div>
+
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
