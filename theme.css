@@ -30,3 +30,10 @@ td, th {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+.chartopen {
+    text-decoration: none;
+    color: #eee;
+    position: fixed;
+    top: 0;
+    right: 5px;
+}

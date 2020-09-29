@@ -9,6 +9,11 @@ const Table = require('cli-table');
 const request = require('request');
 const stringSearcher = require('string-search');
 
+
+
+
+
+
 const form = document.querySelector('form');
 
 form.addEventListener('submit',submitForm);
@@ -20,11 +25,9 @@ function submitForm(e) {
     const stockURL = 'https://finviz.com/quote.ashx?t=' + stock;
 
     let table = document.querySelector('#table');
-    //table.append("<tr><th scope='row'>" + stock.toUpperCase() +"</th><td id='atr'></td><td id='avol'></td><td id='rvol'></td><td id='float'></td><td id='sfloat'></td><td id='inst'></td></tr>");
     let row = table.insertRow(1);
 
-    row.insertCell(0).append(stock);
-
+    row.insertCell(0).innerHTML = "<span id='stonk'><strong>"+ stock + "</strong></span>";
 
     request(stockURL, (error, response, html) => {
         if(!error && response.statusCode == 200) {
@@ -64,10 +67,21 @@ function submitForm(e) {
                     let inst = resultArr[0].text;
                     row.insertCell(6).append(inst.substring(8));
                 })
-            
+             
         }
     });
     
+    const stonk = document.querySelector('#stonk');
+
+    stonk.addEventListener('click', delrow);
+
+    function delrow() {
+        this.closest('tr').remove();
+    }
+
+
+    
+
     document.querySelector("#form").reset();
 
 }
